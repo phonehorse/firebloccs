@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>MPCE - Mobile Edition</title>
+    <style>
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #000; }
+        #game-container { width: 100%; height: 100%; position: relative; }
+        iframe { width: 100%; height: 100%; border: none; }
+        
+        .start-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8); color: white; z-index: 200;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            cursor: pointer; text-align: center; font-family: sans-serif;
+        }
+
+        .mobile-controls {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 100; user-select: none;
+        }
+
+        .control-btn {
+            position: absolute;
+            background-image: url('dpadbutton.png');
+            background-size: cover;
+            border: none;
+            pointer-events: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            touch-action: manipulation;
+            cursor: pointer;
+        }
+        .control-btn:active { opacity: 0.7; }
+
+        /* Official D-Pad Layout */
+        .btn-up    { width: 60px; height: 60px; bottom: 140px; left: 60px; }
+        .btn-down  { width: 60px; height: 60px; bottom: 20px;  left: 60px; }
+        .btn-left  { width: 60px; height: 60px; bottom: 80px;  left: 0px; }
+        .btn-right { width: 60px; height: 60px; bottom: 80px;  left: 120px; }
+
+        /* Action Buttons */
+        .btn-jump { width: 80px; height: 80px; bottom: 80px; right: 30px; border-radius: 50%; background: rgba(255,255,255,0.2); border: 2px solid white; }
+        .btn-attack { width: 80px; height: 80px; bottom: 20px; right: 120px; border-radius: 50%; background: rgba(255,255,255,0.2); border: 2px solid white; }
+
+        .controls-hint {
+            position: absolute; top: 10px; left: 10px;
+            color: #55ff55; font-family: 'Courier New', Courier, monospace; font-size: 12px;
+            background: rgba(0,0,0,0.5); padding: 5px; border-radius: 5px;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body onclick="handleFirstInteraction()">
+    <div id="game-container">
+        <div id="start-overlay" onclick="handleFirstInteraction()">
+            <h1 style="font-family: 'Courier New', Courier, monospace;">MPCE</h1>
+            <p>Click anywhere to enable sound & start</p>
+        </div>
+        <iframe id="game-frame" src="EaglercraftX_1.8_u53_WASM-GC_Offline.html"></iframe>
+        
+        <div class="mobile-controls">
+            <div class="controls-hint">MPCE v0.2.1 [OFFICIAL ASSETS]</div>
+            
+            <div class="control-btn btn-up" id="key-w"></div>
+            <div class="control-btn btn-down" id="key-s"></div>
+            <div class="control-btn btn-left" id="key-a"></div>
+            <div class="control-btn btn-right" id="key-d"></div>
+            
+            <div class="control-btn btn-jump" id="key-space">JUMP</div>
+            <div class="control-btn btn-attack" id="key-ctrl">HIT</div>
+        </div>
+    </div>
+
+    <script>
+        const frame = document.getElementById('game-frame');
+        const overlay = document.getElementById('start-overlay');
+
+        function handleFirstInteraction() {
+            overlay.style.display = 'none';
+            frame.contentWindow.document.dispatchEvent(new MouseEvent('click', {bubbles: true}));
+            fastBoot();
+        }
+
+        function sendKey(key, type) {
+            const event = new KeyboardEvent(type, {
+                key: key,
+                keyCode: getKeyCode(key),
+                bubbles: true,
+                cancelable: true
+            });
+            frame.contentWindow.dispatchEvent(event);
+        }
+
+        function getKeyCode(key) {
+            const codes = { 'w': 87, 's': 83, 'a': 65, 'd': 68, ' ': 32, 'Control': 17, 'Enter': 13 };
+            return codes[key] || 0;
+        }
+
+        const keyMap = { 'key-w': 'w', 'key-s': 's', 'key-a': 'a', 'key-d': 'd', 'key-space': ' ', 'key-ctrl': 'Control' };
+        Object.keys(keyMap).forEach(id => {
+            const btn = document.getElementById(id);
+            const key = keyMap[id];
+            btn.addEventListener('touchstart', (e) => { e.preventDefault(); sendKey(key, 'keydown'); });
+            btn.addEventListener('touchend', (e) => { e.preventDefault(); sendKey(key, 'keyup'); });
+            btn.addEventListener('mousedown', (e) => { sendKey(key, 'keydown'); });
+            btn.addEventListener('mouseup', (e) => { sendKey(key, 'keyup'); });
+        });
+
+        function fastBoot() {
+            const bootInterval = setInterval(() => {
+                sendKey('Enter', 'keydown');
+                setTimeout(() => sendKey('Enter', 'keyup'), 50);
+                const name = "Player";
+                for(let char of name) {
+                    sendKey(char, 'keydown');
+                    setTimeout(() => sendKey(char, 'keyup'), 10);
+                }
+                sendKey('Enter', 'keydown');
+                setTimeout(() => sendKey('Enter', 'keyup'), 50);
+            }, 1200);
+            setTimeout(() => clearInterval(bootInterval), 20000);
+        }
+    </script>
+</body>
+</html>

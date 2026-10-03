@@ -1,0 +1,9 @@
+{
+  "name": "MPCE",
+  "description": "The original Minecraft Pocket Edition demo",
+  "launch_path": "/index.html",
+  "icons": {
+    "56": "icon.png",
+    "112": "icon.png"
+  }
+}

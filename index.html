@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Firebloccs</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="user-mode">
+    <header>
+        <img src="Logo.png" alt="Firebloccs Logo" class="logo">
+        <h1 id="app-title">Firebloccs</h1>
+    </header>
+
+    <main id="app-list">
+        <!-- Apps will be injected here -->
+    </main>
+
+    <footer id="main-footer">
+        <img src="2026 Firebloccs for bottom of page.png" alt="Firebloccs 2026" class="footer-img">
+    </footer>
+
+    <!-- Developer Console (Hidden by default) -->
+    <div id="dev-console" class="hidden">
+        <div class="dev-header">🛠️ DEV MODE ACTIVE</div>
+        <div class="dev-logs" id="dev-logs">
+            Welcome to Firebloccs Dev Mode...
+        </div>
+        <div class="dev-controls">
+            <button onclick="mockInstallAll()">Mock Install All</button>
+            <button onclick="clearLogs()">Clear Logs</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "name": "Firebloccs",
+  "description": "The ultimate package manager for Firefox OS",
+  "launch_path": "/index.html",
+  "icons": {
+    "56": "/Logo.png",
+    "112": "/Logo.png"
+  }
+}

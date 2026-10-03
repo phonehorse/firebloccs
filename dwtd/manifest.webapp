@@ -1,0 +1,9 @@
+{
+  "name": "Dumb Ways To Die",
+  "description": "The original cult classic",
+  "launch_path": "/index.html",
+  "icons": {
+    "56": "icon.png",
+    "112": "icon.png"
+  }
+}

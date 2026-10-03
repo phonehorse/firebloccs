@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>DOOM - Firefox OS</title>
+    <style>
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: black; }
+        #game-container { width: 100%; height: 100%; position: relative; }
+        iframe { width: 100%; height: 100%; border: none; }
+        .controls-hint {
+            position: absolute; bottom: 10px; left: 10px;
+            color: red; font-family: monospace; font-size: 12px;
+            pointer-events: none;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body style="background: black;">
+    <div id="game-container">
+        <!-- Switched to a more stable, high-performance WASM port -->
+        <iframe 
+            src="https://uzdoom.bootnet.io/" 
+            allow="cross-origin-isolated; fullscreen; gamepad; autoplay" 
+            allowfullscreen>
+        </iframe>
+        <div class="controls-hint">FIREFOX OS PORT - V1.1 [STABLE]</div>
+    </div>
+</body>
+</html>

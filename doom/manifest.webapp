@@ -1,0 +1,9 @@
+{
+  "name": "DOOM",
+  "description": "The classic 1993 FPS ported to Firefox OS",
+  "launch_path": "/index.html",
+  "icons": {
+    "56": "icon.png",
+    "112": "icon.png"
+  }
+}
