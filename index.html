@@ -1,37 +1,266 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Firebloccs</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Firebloccs Store</title>
+    <style>
+        /* --- STYLES --- */
+        body {
+            background-color: #121212;
+            color: #eee;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: #1f1f1f;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 2px solid #333;
+        }
+        .logo {
+            width: 64px;
+            height: 64px;
+            border-radius: 12px;
+            margin-bottom: 10px;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            letter-spacing: 1px;
+        }
+        main {
+            flex: 1;
+            padding: 15px;
+        }
+        .app-item {
+            background-color: #1f1f1f;
+            margin-bottom: 15px;
+            padding: 15px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+        .app-info {
+            display: flex;
+            align-items: center;
+        }
+        .app-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            margin-right: 15px;
+            background-color: #333;
+        }
+        .app-details h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+        .app-details p {
+            margin: 5px 0 0;
+            font-size: 12px;
+            color: #aaa;
+        }
+        .install-btn {
+            cursor: pointer;
+            width: 100px;
+            height: auto;
+            transition: transform 0.1s;
+        }
+        .install-btn:active {
+            transform: scale(0.95);
+        }
+        footer {
+            padding: 20px;
+            text-align: center;
+            border-top: 2px solid #333;
+            background-color: #1f1f1f;
+        }
+        .footer-img {
+            max-width: 100%;
+            height: auto;
+        }
+        .hidden { display: none !important; }
+        #dev-console {
+            position: fixed; bottom: 0; left: 0; right: 0;
+            background: #000; color: #0f0;
+            font-family: 'Courier New', Courier, monospace;
+            border-top: 3px solid #0f0; z-index: 9999;
+            max-height: 30%; display: flex; flex-direction: column;
+        }
+        .dev-header { background: #0f0; color: #000; font-weight: bold; padding: 5px 10px; font-size: 12px; }
+        .dev-logs { padding: 10px; font-size: 11px; overflow-y: auto; flex: 1; white-space: pre-wrap; }
+        .dev-controls { padding: 10px; border-top: 1px solid #0f0; display: flex; gap: 10px; }
+        .dev-controls button { background: #000; color: #0f0; border: 1px solid #0f0; padding: 5px 10px; cursor: pointer; }
+    </style>
 </head>
-<body class="user-mode">
+<body>
     <header>
         <img src="Logo.png" alt="Firebloccs Logo" class="logo">
         <h1 id="app-title">Firebloccs</h1>
     </header>
 
     <main id="app-list">
-        <!-- Apps will be injected here -->
+        <!-- Apps injected here -->
     </main>
 
-    <footer id="main-footer">
+    <footer>
         <img src="2026 Firebloccs for bottom of page.png" alt="Firebloccs 2026" class="footer-img">
     </footer>
 
-    <!-- Developer Console (Hidden by default) -->
     <div id="dev-console" class="hidden">
         <div class="dev-header">🛠️ DEV MODE ACTIVE</div>
-        <div class="dev-logs" id="dev-logs">
-            Welcome to Firebloccs Dev Mode...
-        </div>
+        <div class="dev-logs" id="dev-logs">Welcome to Firebloccs Dev Mode...</div>
         <div class="dev-controls">
             <button onclick="mockInstallAll()">Mock Install All</button>
             <button onclick="clearLogs()">Clear Logs</button>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        /* --- OBFUSCATED LOGIC --- */
+        (function() {
+            const _0x4f22 = {
+                'a': 'QWxwaW5lMzIh',
+                'b': 'DOOM',
+                'c': 'The classic 1993 FPS ported to Firefox OS',
+                'd': 'Awesome Game',
+                'e': 'The best game for Firefox OS',
+                'f': 'Utility Tool',
+                'g': 'Clean up your device quickly',
+                'h': 'Web Browser Plus',
+                'i': 'Faster browsing for ZTE Open',
+                'm': 'MPCE',
+                'n': 'The original Minecraft Pocket Edition demo',
+                'dwtd': 'Dumb Ways To Die',
+                'dwtd_desc': 'The original cult classic'
+            };
+            const _0xdecode = (s) => atob(_0x4f22[s]);
+            const _0xstr = (s) => _0x4f22[s] || s;
+
+            const apps = [
+                { id: 'dwtd', name: _0xstr('dwtd'), description: _0xstr('dwtd_desc'), manifestUrl: "./dwtd/manifest.webapp", launchUrl: "./dwtd/index.html", icon: "Logo.png" },
+                { id: 'doom', name: _0xstr('b'), description: _0xstr('c'), manifestUrl: "./doom/manifest.webapp", launchUrl: "./doom/index.html", icon: "Logo.png" },
+                { id: 'mcpe', name: _0xstr('m'), description: _0xstr('n'), manifestUrl: "./minecraft/manifest.webapp", launchUrl: "./minecraft/index.html", icon: "Logo.png" },
+                { id: 'game1', name: _0xstr('d'), description: _0xstr('e'), manifestUrl: "https://example.com/game1/manifest.webapp", launchUrl: "https://example.com/game1/index.html", icon: "Logo.png" },
+                { id: 'util1', name: _0xstr('f'), description: _0xstr('g'), manifestUrl: "https://example.com/util1/manifest.webapp", launchUrl: "./util1/index.html", icon: "Logo.png" },
+                { id: 'brow1', name: _0xstr('h'), description: _0xstr('i'), manifestUrl: "https://example.com/brow1/manifest.webapp", launchUrl: "https://example.com/brow1/index.html", icon: "Logo.png" }
+            ];
+
+            let _0xdev = false;
+
+            window.logDev = function(msg) {
+                if (!_0xdev) return;
+                const logs = document.getElementById('dev-logs');
+                if (logs) {
+                    logs.innerText += "\n[" + new Date().toLocaleTimeString() + "] " + msg;
+                    logs.scrollTop = logs.scrollHeight;
+                }
+            };
+
+            window.clearLogs = function() {
+                document.getElementById('dev-logs').innerText = "Logs cleared...";
+            };
+
+            window.mockInstallAll = function() {
+                logDev("Initiating bulk mock install...");
+                apps.forEach(app => {
+                    localStorage.setItem('installed_' + app.id, 'true');
+                    setTimeout(() => { logDev("Mock installed: " + app.name); renderApps(); }, Math.random() * 1000);
+                });
+            };
+
+            window.renderApps = function() {
+                const list = document.getElementById('app-list');
+                if (!list) return;
+                list.innerHTML = '';
+                apps.forEach(app => {
+                    const isInstalled = localStorage.getItem('installed_' + app.id) === 'true';
+                    const item = document.createElement('div');
+                    item.className = 'app-item';
+                    item.innerHTML = `
+                        <div class="app-info">
+                            <img src="${app.icon}" class="app-icon">
+                            <div class="app-details">
+                                <h3>${app.name} ${isInstalled ? '✅' : ''}</h3>
+                                <p>${app.description}</p>
+                            </div>
+                        </div>
+                        <img src="install button.png" class="install-btn" style="filter: ${isInstalled ? 'hue-rotate(140deg) brightness(1.2)' : 'none'}" onclick="handleAction('${app.id}')">
+                    `;
+                    list.appendChild(item);
+                });
+            };
+
+            window.handleAction = function(id) {
+                const app = apps.find(a => a.id === id);
+                if (!app) return;
+                const isInstalled = localStorage.getItem('installed_' + app.id) === 'true';
+                if (isInstalled) {
+                    logDev("Launching: " + app.name);
+                    window.open(app.launchUrl, '_blank');
+                } else {
+                    installApp(app);
+                }
+            };
+
+            function installApp(app) {
+                logDev("Attempting to install: " + app.name);
+                if (typeof navigator.mozApps !== 'undefined' && navigator.mozApps.install) {
+                    var request = navigator.mozApps.install(app.manifestUrl);
+                    request.onsuccess = function() {
+                        alert(app.name + " installed successfully!");
+                        logDev("SUCCESS: " + app.name + " installed.");
+                        localStorage.setItem('installed_' + app.id, 'true');
+                        renderApps();
+                    };
+                    request.onerror = function() {
+                        alert("Install failed: " + this.error.name);
+                        logDev("ERROR: " + this.error.name);
+                    };
+                } else {
+                    if (_0xdev) {
+                        logDev("PC INSTALL: Adding " + app.name + " to virtual home screen...");
+                        localStorage.setItem('installed_' + app.id, 'true');
+                        setTimeout(() => {
+                            alert("[PC MODE] " + app.name + " has been installed! Add this page to your home screen via browser settings to put it on your desktop.");
+                            logDev("SUCCESS: " + app.name + " mock-installed.");
+                            renderApps();
+                        }, 500);
+                    } else {
+                        alert("Firefox OS installation API not found.");
+                    }
+                }
+            }
+
+            window.checkDevAccess = function() {
+                const plat = navigator.platform.toUpperCase();
+                if (plat.indexOf('MAC') >= 0 || plat.indexOf('WIN') >= 0) {
+                    const pass = prompt("Developer Access Required. Enter Password:");
+                    if (pass === _0xdecode('a')) {
+                        _0xdev = true;
+                        const consoleEl = document.getElementById('dev-console');
+                        if (consoleEl) consoleEl.classList.remove('hidden');
+                        const titleEl = document.getElementById('app-title');
+                        if (titleEl) titleEl.innerText = "Firebloccs [DEV]";
+                        logDev("AUTHENTICATED: Dev Mode Enabled.");
+                    } else if (pass !== null) {
+                        alert("Incorrect password.");
+                    }
+                }
+            };
+
+            window.onload = function() {
+                checkDevAccess();
+                renderApps();
+            };
+        })();
+    </script>
 </body>
 </html>
